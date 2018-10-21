@@ -1,8 +1,19 @@
 # IoC
 The most simple Ioc Container of Dart and Flutter
 
+If you looking for a package that is light-weight and provide production-ready of inversion of
+control, then this package is right for you.
+
+This package provides only 2 api, easy to learn and use,  but definitely fits most use case in your flutter project.
+
+If you are a server developer developing small or medium scale project, it's very likely you want to use this package.
+However, large scale project may need more powerful heavy weight IoC library.
+
+You **can** use it in your angular project, but we highly recommend you use dependency injection system provided by angular.
+
+
 ## Goal
-Keep it minimal
+Keep it minimal, light-weight
 
 ## Important
 1. The container does not rely on reflection, it's just a Map, so supports Flutter
