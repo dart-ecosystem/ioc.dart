@@ -1,8 +1,8 @@
 name: ioc
 description: A starting point for Dart libraries or applications.
-  version: 1.0.0
-  homepage: https://www.example.com
-  author: copydog <775150@qq.com>
+version: 0.1.0
+homepage: https://github.com/copydog/ioc
+author: copydog <775150@qq.com>
 
 environment:
   sdk: '>=2.0.0 <3.0.0'
