@@ -71,4 +71,4 @@ main() {
   // later
   Ioc().use<MyClass>('MyClass'); // you will get an instance of OtherClass
 }
-
+```
