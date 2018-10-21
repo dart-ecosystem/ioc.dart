@@ -46,5 +46,29 @@ void main()
       expect(instance, TypeMatcher<A>());
       expect(instance, isNot(instance2));
     });
+    
+    test('.bind() singleton', () {
+      Ioc().bind('A', (ioc) => new A(), singleton: true);
+      Ioc().bind(A, (ioc) => new A(), singleton: true);
+
+      var a1 = Ioc().use('A');
+      var a2 = Ioc().use('A');
+
+      expect(a1, TypeMatcher<A>());
+      expect(a1, a2);
+    });
+
+    test('.bind() with global singleton setting', () {
+      Ioc().config['singlton'] = true;
+      Ioc().bind('A', (ioc) => new A());
+      Ioc().bind(A, (ioc) => new A());
+
+      var a1 = Ioc().use('A');
+      var a2 = Ioc().use('A');
+
+      expect(a1, TypeMatcher<A>());
+      expect(a1, a2);
+      Ioc().config['singlton'] = false;
+    });
   });
 }

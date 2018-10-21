@@ -8,6 +8,10 @@ library ioc;
 class Ioc {
   static Ioc iocInstance;
 
+  Map<String, dynamic> config = {
+    'singleton': false,
+  };
+
   Map _bindingMap = new Map();
 
   Map _singletonMap = new Map();
@@ -24,7 +28,13 @@ class Ioc {
 
   Ioc._();
 
-  Ioc bind<T>(dynamic carrier, T initializer(Ioc ioc)) {
+  Ioc bind<T>(dynamic carrier, T initializer(Ioc ioc), {bool singleton}) {
+    if (config['singlton'] == true || singleton == true) {
+      _singletonMap[carrier] = initializer(this);
+
+      return this;
+    }
+
     _bindingMap[carrier] = initializer;
 
     return this;

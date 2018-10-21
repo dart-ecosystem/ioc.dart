@@ -11,6 +11,7 @@ Keep it minimal
 ## Feature
 1. Supports singleton
 2. Supports binding to anything
+4. Supports lazy initialization (Developing)
 3. Detects circular dependencies (Developing)
 
 ## Usage
