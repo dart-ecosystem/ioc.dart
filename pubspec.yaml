@@ -1,7 +1,7 @@
 name: ioc
 description: The most simple Ioc Container of Dart and Flutter
-version: 0.2.0
-homepage: https://github.com/copydog/ioc
+version: 0.2.1
+homepage: https://github.com/copydog/ioc.dart
 author: copydog <775150@qq.com>
 
 environment:

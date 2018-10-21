@@ -1,3 +1,6 @@
+## 0.2.1
+- Support singleton in .bind() and global
+
 ## 0.1.0
 - Basic usage of .use() .bind()
 
