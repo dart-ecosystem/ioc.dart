@@ -25,7 +25,8 @@ main() {
   
   // later
   Ioc().use('MyClass'); // you will get an instance of MyClass
-  Ioc().use<MyClass>('MyClass'); // with generic
+  // with generic if you want
+  Ioc().use<MyClass>('MyClass');
 }
 ```
 
@@ -39,7 +40,6 @@ main() {
   
   // later
   Ioc().use(MyClass); // you will get an instance of MyClass
-  Ioc().use<MyClass>(MyClass); // with generic
 }
 ```
 
@@ -53,6 +53,22 @@ main() {
   
   // later
   Ioc().use(MyClass); // you will get an instance of OtherClass
-  Ioc().use<MyClass>(MyClass); // with generic
 }
 ```
+
+bind with other dependency
+
+```dart
+import 'package:ioc/ioc.dart';
+
+main() {
+  Ioc().bind('MyClass', (Ioc ioc) {
+    OtherClass other = ioc.use<OtherClass>('OtherClass');
+    
+    return new MyClass(other);
+  });
+  
+  // later
+  Ioc().use<MyClass>('MyClass'); // you will get an instance of OtherClass
+}
+
