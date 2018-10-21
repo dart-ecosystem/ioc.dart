@@ -1,5 +1,5 @@
 # IoC
-The most simple Ioc Container of Dart and Flutter
+The most simple IoC Container of Dart and Flutter
 
 If you looking for a package that is light-weight and provide production-ready of inversion of
 control, then this package is right for you.
