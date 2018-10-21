@@ -5,16 +5,21 @@ class A {}
 
 class B {}
 
-void main()
-{
-  group('Ioc tests', ()
-  {
+class C {
+  static int initializedCount = 0;
+
+  C() {
+    initializedCount++;
+  }
+}
+
+void main() {
+  group('Ioc tests', () {
     test('Ioc() is an instance of Ioc', () {
       expect(Ioc(), TypeMatcher<Ioc>());
     });
 
-    test('should alway be singleton', ()
-    {
+    test('should alway be singleton', () {
       expect(Ioc(), Ioc());
     });
 
@@ -46,7 +51,7 @@ void main()
       expect(instance, TypeMatcher<A>());
       expect(instance, isNot(instance2));
     });
-    
+
     test('.bind() singleton', () {
       Ioc().bind('A', (ioc) => new A(), singleton: true);
       Ioc().bind(A, (ioc) => new A(), singleton: true);
@@ -69,6 +74,40 @@ void main()
       expect(a1, TypeMatcher<A>());
       expect(a1, a2);
       Ioc().config['singlton'] = false;
+    });
+
+    test('lazy load singleton', () {
+      Ioc myIoc = Ioc.create();
+
+      myIoc.bind('A', (ioc) => new C(), singleton: true, lazy: true);
+
+      expect(C.initializedCount, 0);
+
+      C c = myIoc.use<C>('A');
+
+      expect(C.initializedCount, 1);
+      expect(c, TypeMatcher<C>());
+
+      myIoc.use<C>('A');
+      expect(C.initializedCount, 1);
+    });
+
+    test('set lazy load singleton at global', () {
+      Ioc myIoc = Ioc.create();
+      myIoc.config['lazy'] = true;
+      C.initializedCount = 0;
+
+      myIoc.bind('A', (ioc) => new C(), singleton: true);
+
+      expect(C.initializedCount, 0);
+
+      C c = myIoc.use<C>('A');
+
+      expect(C.initializedCount, 1);
+      expect(c, TypeMatcher<C>());
+
+      myIoc.use<C>('A');
+      expect(C.initializedCount, 1);
     });
   });
 }
