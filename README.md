@@ -1,22 +1,58 @@
-A library for Dart developers.
+# Ioc
+The most simple Ioc Container of Dart and Flutter
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+## Goal
+Keep it minimal
+
+## Important
+1. The container does not rely on reflection, it's just a Map, so supports Flutter
+2. Dart2 is **required** to use this package
+
+## Feature
+1. Supports singleton
+2. Supports binding to anything
+3. Detects circular dependencies (Developing)
 
 ## Usage
 
-A simple usage example:
+bind to a string:
 
 ```dart
 import 'package:ioc/ioc.dart';
 
 main() {
-  var awesome = new Awesome();
+  Ioc().bind('MyClass', (ioc) => new MyClass());
+  
+  // later
+  Ioc().use('MyClass'); // you will get an instance of MyClass
+  Ioc().use<MyClass>('MyClass'); // with generic
 }
 ```
 
-## Features and bugs
+bind to self:
 
-Please file feature requests and bugs at the [issue tracker][tracker].
+```dart
+import 'package:ioc/ioc.dart';
 
-[tracker]: http://example.com/issues/replaceme
+main() {
+  Ioc().bind(MyClass, (ioc) => new MyClass());
+  
+  // later
+  Ioc().use(MyClass); // you will get an instance of MyClass
+  Ioc().use<MyClass>(MyClass); // with generic
+}
+```
+
+bind to other:
+
+```dart
+import 'package:ioc/ioc.dart';
+
+main() {
+  Ioc().bind(MyClass, (ioc) => new OtherClass());
+  
+  // later
+  Ioc().use(MyClass); // you will get an instance of OtherClass
+  Ioc().use<MyClass>(MyClass); // with generic
+}
+```
