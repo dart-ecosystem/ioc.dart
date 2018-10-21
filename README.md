@@ -11,7 +11,6 @@ However, large scale project may need more powerful heavy-weight IoC library.
 
 You **can** use it in your angular project, but we highly recommend you use dependency injection system provided by angular.
 
-
 ## Goal
 Keep it minimal, light-weight
 
@@ -82,5 +81,50 @@ main() {
   
   // later
   Ioc().use<MyClass>('MyClass'); // you will get an instance of OtherClass
+}
+```
+
+using singleton: 
+
+```dart
+import 'package:ioc/ioc.dart';
+
+class A {
+  void someMethod() {}
+}
+
+main() {
+  // use singleton on one
+  Ioc().bind('A', (ioc) => new A(), singleton: true);
+
+  Ioc().use<A>('A').someMethod();
+
+  // use singleton on all
+  Ioc().config['singlton'] = true;
+
+  Ioc().use<A>('A').someMethod();
+}
+```
+
+using lazy-loading singleton: 
+
+```dart
+import 'package:ioc/ioc.dart';
+
+class A {
+  void someMethod() {}
+}
+
+main() {
+  // use lazy loaded singleton on one
+  Ioc().bind('A', (ioc) => new A(), singleton: true, lazy: true);
+
+  // class A will only be instantiated after first .use('A')
+  Ioc().use<A>('A').someMethod();
+
+  // use lazy loaded singleton on all
+  Ioc().config['lazy'] = true;
+
+  Ioc().use<A>('A').someMethod();
 }
 ```
