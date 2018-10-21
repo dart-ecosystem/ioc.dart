@@ -1,3 +1,6 @@
+## 0.3.0
+- Support lazy-loaded singleton
+
 ## 0.2.1
 - Support singleton in .bind() and global
 
