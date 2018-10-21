@@ -1,6 +1,6 @@
 name: ioc
-description: A starting point for Dart libraries or applications.
-version: 0.1.0
+description: The most simple Ioc Container of Dart and Flutter
+version: 0.1.1
 homepage: https://github.com/copydog/ioc
 author: copydog <775150@qq.com>
 

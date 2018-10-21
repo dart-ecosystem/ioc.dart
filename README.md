@@ -1,4 +1,4 @@
-# Ioc
+# IoC
 The most simple Ioc Container of Dart and Flutter
 
 ## Goal
