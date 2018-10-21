@@ -7,7 +7,7 @@ control, then this package is right for you.
 This package provides only 2 api, easy to learn and use,  but definitely fits most use case in your flutter project.
 
 If you are a server developer developing small or medium scale project, it's very likely you want to use this package.
-However, large scale project may need more powerful heavy weight IoC library.
+However, large scale project may need more powerful heavy-weight IoC library.
 
 You **can** use it in your angular project, but we highly recommend you use dependency injection system provided by angular.
 
